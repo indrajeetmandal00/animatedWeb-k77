@@ -7,9 +7,7 @@ import Projects from './pages/projects'
 
 const App = () => {
   return (
-    <div className="text-white w-full h-screen flex flex-col items-center justify-center gap-10">
-
-
+    <div className="text-white">
 
         <Routes>
 

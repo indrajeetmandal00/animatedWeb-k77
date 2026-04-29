@@ -7,9 +7,14 @@ const home = () => {
   return (
     <div>
        
-      <div className='bg-red-900 h-screen w-screen'>
+      <div className='h-screen w-screen fixed'>
          <Video/>
-        </div>
+      </div>
+      <div className='h-screen w-screen relative text-color-white flex flex-col justify-between '>
+            <HomeHeroText/>
+            <HomeBottomText/>
+      </div>
+      
     </div>
   )
 }

@@ -1,12 +1,18 @@
 import React from 'react'
+import heroVideo from '../../assets/69496b2d.mp4'
 
-const video = () => {
+const Video = () => {
   return (
-    <div className='h-screen w-screen overflow-hidden'>
-      
-    <video src="src\assets\69496b2d.mp4" autoPlay loop muted className='h-full w-full object-cover'></video>
+    <div className='relative h-full w-full rounded-[inherit] overflow-hidden '>
+      <video
+        src={heroVideo}
+        autoPlay
+        loop
+        muted
+        className='absolute inset-0 block h-full w-full object-cover'
+      />
     </div>
   )
 }
 
-export default video
+export default Video
