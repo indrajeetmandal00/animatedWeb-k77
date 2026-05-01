@@ -17,7 +17,7 @@ const Navbar = () => {
 
     const handleMouseLeave = contextSafe(() => {
         gsap.to(greenNavRef.current, { top: '-100%', duration: 0.3, ease: 'power2.inOut' });
-        gsap.to(iconRef.current, { color: 'white', duration: 0.3, ease: 'power2.inOut' });
+        gsap.to(iconRef.current, { color: '#D3FD50', duration: 0.3, ease: 'power2.inOut' });
     });
 
     return (
@@ -37,8 +37,8 @@ const Navbar = () => {
 
                 <div className='bg-black h-full w-full absolute top-0'></div>
                 <div ref={greenNavRef} className='bg-[#D3FD50] h-full w-full absolute top-[-100%]'></div>
-                <div className='relative z-10 flex h-full w-full items-center justify-center pointer-events-none'>
-                    <i ref={iconRef} className="ri-menu-3-fill text-3xl text-white"></i>
+                <div className='relative z-10 flex h-full w-full items-center justify-end pointer-events-none'>
+                    <i ref={iconRef} className="ri-menu-3-fill text-3xl text-white inline-block scale-x-500 mr-6"></i>
                 </div>
 
             </div>
