@@ -3,7 +3,7 @@ import gsap from 'gsap'
 import { useGSAP } from '@gsap/react'
 
 
-const Navbar = () => {
+const Navbar = ({ setIsNavOpen }) => {
 
     const greenNavRef = useRef(null);
     const iconRef = useRef(null);
@@ -32,13 +32,14 @@ const Navbar = () => {
 
 
             <div
+                onClick={() => setIsNavOpen(true)}
                 onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}
-                className='bg-black h-16 w-[17vw] relative overflow-hidden cursor-pointer'>
+                className='bg-black h-13 w-[17vw] relative overflow-hidden cursor-pointer'>
 
                 <div className='bg-black h-full w-full absolute top-0'></div>
                 <div ref={greenNavRef} className='bg-[#D3FD50] h-full w-full absolute top-[-100%]'></div>
                 <div className='relative z-10 flex h-full w-full items-center justify-end pointer-events-none'>
-                    <i ref={iconRef} className="ri-menu-3-fill text-3xl text-white inline-block scale-x-500 mr-6"></i>
+                    <i ref={iconRef} className="ri-menu-3-fill text-3xl text-white scale-x-500 mr-6"></i>
                 </div>
 
             </div>
