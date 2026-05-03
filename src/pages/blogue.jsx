@@ -55,7 +55,7 @@ const blogue = () => {
   const marqueeText = useRef(null);
 
   // Repeat the text enough times to overflow the screen twice for a seamless loop
-  const repeatedText = "Creative Insights • K72 Blog • ".repeat(8);
+  const repeatedText = "Creative Insights • K77 Blog • ".repeat(8);
 
   useGSAP(() => {
     if (!marqueeText.current) return;
