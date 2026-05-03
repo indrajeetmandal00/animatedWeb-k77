@@ -3,7 +3,7 @@ import gsap from 'gsap'
 import { useGSAP } from '@gsap/react'
 import { Link } from 'react-router-dom'
 
-const MarqueeLink = ({ title }) => {        //Because the GSAP animation was only pointing to a single reference, it couldn't animate all four of them independently.
+const MarqueeLink = ({ title, to, onClick }) => {        //Because the GSAP animation was only pointing to a single reference, it couldn't animate all four of them independently.
     //fix this the proper "React way" MarqueeLink
     const marqueeRef = useRef(null);
     const tweenRef = useRef(null);      //tweenRef just saves the ani to be reused in next function 
@@ -27,7 +27,7 @@ const MarqueeLink = ({ title }) => {        //Because the GSAP animation was onl
     });
 
     return (
-        <div className='link group border-y-1 border-white relative overflow-hidden cursor-pointer' onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}>
+        <Link to={to} onClick={onClick} className='block link group border-y-1 border-white relative overflow-hidden cursor-pointer' onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}>
             <h1 className='leading-[8vw] pt-2 text-center transition-opacity duration-300 ease-in-out group-hover:opacity-0'>{title}</h1>
             <div className='w-full h-full absolute top-0 left-0 bg-[#D3FD50] flex items-center overflow-hidden -translate-y-full group-hover:translate-y-0 transition-transform duration-300 ease-in-out z-10'>
                 <div ref={marqueeRef} className='flex items-start w-max text-black'>
@@ -45,7 +45,7 @@ const MarqueeLink = ({ title }) => {        //Because the GSAP animation was onl
                     </div>
                 </div>
             </div>
-        </div>
+        </Link>
     )
 }
 
@@ -85,25 +85,22 @@ const FullScreenNav = ({ isNavOpen, setIsNavOpen }) => {
                 <div className='absolute flex top-0 left-0 item-start justify-center z-50 pointer-events-none'>
                     <div className='p-4'>
                         <div className='w-20'>
-                            <svg xmlns="http://www.w3.org/2000/svg" fill='white' viewBox="0 0 103 44">
-                                <path fillRule="evenodd" d="M35.1441047,8.4486911 L58.6905011,8.4486911 L58.6905011,-1.3094819e-14 L35.1441047,-1.3094819e-14 L35.1441047,8.4486911 Z M20.0019577,0.000230366492 L8.83414254,25.3433089 L18.4876971,25.3433089 L29.5733875,0.000230366492 L20.0019577,0.000230366492 Z M72.5255345,0.000691099476 L72.5255345,8.44846073 L94.3991559,8.44846073 L94.3991559,16.8932356 L72.5275991,16.8932356 L72.5275991,19.5237906 L72.5255345,19.5237906 L72.5255345,43.9274346 L102.80937,43.9274346 L102.80937,35.4798953 L80.9357483,35.4798953 L80.9357483,25.3437696 L94.3996147,25.3428482 L94.3996147,16.8953089 L102.80937,16.8953089 L102.80937,0.000691099476 L72.5255345,0.000691099476 Z M-1.30398043e-14,43.9278953 L8.78642762,43.9278953 L8.78642762,0.0057591623 L-1.30398043e-14,0.0057591623 L-1.30398043e-14,43.9278953 Z M58.6849955,8.4486911 L43.1186904,43.9274346 L52.3166592,43.9274346 L67.9877996,8.4486911 L58.6849955,8.4486911 Z M18.4688864,25.3437696 L26.7045278,43.9278953 L36.2761871,43.9278953 L28.1676325,25.3375497 L18.4688864,25.3437696 Z"></path>
-                            </svg>
+                           <svg xmlns="http://www.w3.org/2000/svg" fill='white' viewBox="0 0 103 44">
+                        <path fillRule="evenodd" d="M35.144,8.449H58.691H58.691H35.144H35V0H73Z M20.002,0L8.834,25.343L18.488,25.343L29.573,0Z M102.809,16.895Z M0,43.928H8.786V0.006H0Z M58.685,8.449L48,44L55,44L67,8L88,8L77,44L85,44L96,8L98,0V1H78 M96,1Z M18.469,25.344L26.705,43.928L36.276,43.928L28.168,25.338Z"></path>
+                    </svg>
                         </div>
                     </div>
-
-                    <Link to="/" onClick={() => setIsNavOpen(false)} className='cross fixed -top-6 -right-2 z-[999] cursor-pointer pointer-events-auto'>
-                        <i className="ri-close-large-line text-8xl leading-none text-white hover:text-[#D3FD50] transition-colors duration-300"></i>
-                    </Link>
-
-
                 </div>
 
+                <Link to="/" onClick={() => setIsNavOpen(false)} className='cross absolute top-0 right-0 h-13 w-[17vw] flex items-center justify-end z-[999] cursor-pointer pointer-events-auto'>
+                    <i className="ri-close-large-line text-4xl mr-6 text-white hover:text-[#D3FD50] transition-colors duration-300"></i>
+                </Link>
 
                 <div className='all-links'>
-                    <MarqueeLink title="Projects" />
-                    <MarqueeLink title="Agence" />
-                    <MarqueeLink title="contact" />
-                    <MarqueeLink title="Blogue" />
+                    <MarqueeLink title="Projects" to="/projects" onClick={() => setIsNavOpen(false)} />
+                    <MarqueeLink title="Agence" to="/agence" onClick={() => setIsNavOpen(false)} />
+                    <MarqueeLink title="contact" to="/contact" onClick={() => setIsNavOpen(false)} />
+                    <MarqueeLink title="Blogue" to="/blogue" onClick={() => setIsNavOpen(false)} />
                 </div>
             </div>
 
